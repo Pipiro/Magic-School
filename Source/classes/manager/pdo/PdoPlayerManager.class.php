@@ -5,6 +5,16 @@ require_once 'AbstractPdoManager.class.php';
 class PdoPlayerManager extends AbstractPdoManager 
 {
 
+	//------------------------------------------------------------
+	//  Fonction 	authenticate
+	//  Auteur      Pipiro
+	//------------------------------------------------------------
+	//  Role		: Authentifier un joueur
+	//
+	//------------------------------------------------------------
+	//  Entrée		: Pseudo du joueur, mot de passe
+	//  Sortie		: Objet Joueur
+	//------------------------------------------------------------
 	public function authenticate($username, $password)
 	{
 		$query = $this->pdo->prepare("SELECT id, username, password, isAdmin, isOnline, lastOnline FROM player WHERE username=:username");
@@ -19,7 +29,17 @@ class PdoPlayerManager extends AbstractPdoManager
 			return new Player($result->id, $result->username, $result->isAdmin, $result->isOnline, $result->lastOnline);
 		}
 	}
-	
+
+	//------------------------------------------------------------
+	//  Fonction 	register
+	//  Auteur      Pipiro
+	//------------------------------------------------------------
+	//  Role		: Enregistre un joueur
+	//
+	//------------------------------------------------------------
+	//  Entrée		: Pseudo du joueur, mot de passe
+	//  Sortie		: NULL
+	//------------------------------------------------------------
 	public function register($username, $password)
 	{
 		$query = $this->pdo->prepare("
@@ -29,10 +49,21 @@ class PdoPlayerManager extends AbstractPdoManager
 		$resultat=$query->execute();
 	}
 	
-	public function isMailValid($email)
+	//------------------------------------------------------------
+	//  Fonction 	isMailValid
+	//  Auteur      Pipiro
+	//------------------------------------------------------------
+	//  Role		: Vérifie si le mail du joueur est valide
+	//
+	//------------------------------------------------------------
+	//  Entrée		: Mail du joueur
+	//  Sortie		: True si le mail est valide
+	//				  False si le mail est invalide
+	//------------------------------------------------------------
+	public function isMailValid($mail)
 	{
 		$Syntaxe='#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#'; 
-		if(preg_match($Syntaxe,$email)) 
+		if(preg_match($Syntaxe,$mail)) 
 		{
 			return true;
 		}
@@ -42,6 +73,18 @@ class PdoPlayerManager extends AbstractPdoManager
 		}
 	}
 	
+	//------------------------------------------------------------
+	//  Fonction 	isUsernameExist
+	//  Auteur      Pipiro
+	//------------------------------------------------------------
+	//  Role		: Vérifie si un joueur qui a le même
+	//				  pseudo n'éxiste pas déjà
+	//
+	//------------------------------------------------------------
+	//  Entrée		: Pseudo du joueur
+	//  Sortie		: True si le pseudo existe déjà
+	//				  False si le pseudo est disponible
+	//------------------------------------------------------------
 	public function isUsernameExist($username)
 	{
 		$query = $this->pdo->prepare("SELECT id, username, isAdmin, isOnline, lastOnline FROM player WHERE username=:username");
@@ -54,6 +97,10 @@ class PdoPlayerManager extends AbstractPdoManager
 		if($result)
 		{
 			return true;
+		}
+		else 
+		{
+			return false;
 		}
 	}
 
