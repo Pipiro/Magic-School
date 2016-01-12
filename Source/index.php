@@ -34,7 +34,7 @@
 
       <div class="jumbotron" style="width:1200px;height:800px;">
         <div id="affichage">
-
+            <center><img src='images/hermione.jpg'></img></center>
         </div>
       </div>
 
