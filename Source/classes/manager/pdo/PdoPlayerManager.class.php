@@ -20,4 +20,4 @@ class PdoPlayerManager extends AbstractPdoManager
 
 	}
 
-	
+}
