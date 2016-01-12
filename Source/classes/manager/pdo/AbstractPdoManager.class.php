@@ -5,7 +5,7 @@ abstract class AbstractPdoManager {
 	const DRIVER = 'mysql';
 	const HOST = 'localhost';
 	const PORT = '3306';
-	const DATABASE_NAME = 'magicSchool';
+	const DATABASE_NAME = 'magicschool';
 	const USER = 'root';
 	const PASSWORD = '';
 	

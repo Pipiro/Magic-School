@@ -3,8 +3,9 @@
 interface PlayerManager 
 {
 	function register($username, $password);
-	function login($username, $password);
-	function logout();
+	function authenticate($username, $password);
+	function isMailValid($mail);
+	function isUsernameExist($username);
 }
 
 ?>
