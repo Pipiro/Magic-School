@@ -1,5 +1,8 @@
 <?php
     require 'required.php';
+
+    //on simule la connexion
+    $_SESSION['playerId'] = "1";
 ?>
 
 <!DOCTYPE html>
