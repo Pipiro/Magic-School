@@ -1,20 +1,17 @@
 <?php
 
-class PlayerToStat
+class AccountToPlayer
 {
-	//500 request(s) every 10 minute(s)
-	//10 request(s) every 10 second(s)
-
 	private $id;
 	private $idPlayer;
-	private $idStat;
+	private $idAccount;
 
 	
-	public function __construct($id = null, $idPlayer = null, $idStat = null) 
+	public function __construct($id = null, $idPlayer = null, $idAccount = null) 
 	{
 		$this->id = $id;
 		$this->idPlayer = $idPlayer;
-		$this->idStat = $idStat;
+		$this->idAccount = $idAccount;
 	}
 
 	public function getId() 
@@ -27,7 +24,7 @@ class PlayerToStat
 		return $this->idPlayer; 
 	}
 
-	public function getIdStat() 
+	public function getIdAccount() 
 	{ 
 		return $this->idStat; 
 	}
@@ -42,9 +39,9 @@ class PlayerToStat
 		$this->idPlayer = $idPlayer; 
 	}
 
-	public function setIdStat($idStat) 
+	public function setIdAccount($idAccount) 
 	{ 
-		$this->idStat = $idStat; 
+		$this->idAccount = $idAccount; 
 	}
 }
 

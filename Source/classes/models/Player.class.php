@@ -2,9 +2,6 @@
 
 class Player
 {
-	//500 request(s) every 10 minute(s)
-	//10 request(s) every 10 second(s)
-
 	private $id;
 	private $username;
 	private $password;

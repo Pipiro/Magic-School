@@ -1,12 +1,10 @@
 <?php
 
-class Player
+class Mage
 {
-	//500 request(s) every 10 minute(s)
-	//10 request(s) every 10 second(s)
-
 	private $id;
-	private $sexe;
+	private $name;
+	private $sex;
 	private $life;
 	private $strength;
 	private $speed;
@@ -16,10 +14,11 @@ class Player
 	private $precision;
 
 	
-	public function __construct($id = null, $sexe = null, $age = null, $life = null, $strength = null, $speed = null, $agility = null, $power = null, $precision = null) 
+	public function __construct($id = null, $name=null, $sex = null, $age = null, $life = null, $strength = null, $speed = null, $agility = null, $power = null, $precision = null) 
 	{
 		$this->id = $id;
-		$this->sexe = $sexe;
+		$this->name = $name;
+		$this->sex = $sex;
 		$this->life = $life;
 		$this->strength = $strength;
 		$this->speed = $speed;
@@ -34,9 +33,14 @@ class Player
 		return $this->id; 
 	}
 
-	public function getSexe() 
+	public function getName() 
 	{ 
-		return $this->sexe; 
+		return $this->name; 
+	}
+
+	public function getSex() 
+	{ 
+		return $this->sex; 
 	}
 
 	public function getLife() 
@@ -79,9 +83,14 @@ class Player
 		$this->id = $id; 
 	}
 
-	public function setSexe($sexe) 
+	public function setName($name) 
 	{ 
-		$this->sexe = $sexe; 
+		$this->name = $name; 
+	}
+
+	public function setSex($sex) 
+	{ 
+		$this->sex = $sex; 
 	}
 
 	public function setLife($life) 
