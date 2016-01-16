@@ -3,14 +3,16 @@
 class Mage
 {
 	private $id;
+	private $idPlayer;
 	private $gold;
 	private $level;
 	private $experience;
 
 	
-	public function __construct($id = null, $gold = null, $level = null, $experience = null) 
+	public function __construct($id = null, $idPlayer = null, $gold = null, $level = null, $experience = null) 
 	{
 		$this->id = $id;
+		$this->idPlayer = $idPlayer;
 		$this->gold = $gold;
 		$this->level = $level;
 		$this->experience = $experience;
@@ -19,6 +21,11 @@ class Mage
 	public function getId() 
 	{ 
 		return $this->id; 
+	}
+
+	public function getIdPlayer() 
+	{ 
+		return $this->idPlayer; 
 	}
 
 	public function getGold() 
@@ -39,6 +46,11 @@ class Mage
 	public function setId($id) 
 	{ 
 		$this->id = $id; 
+	}
+
+	public function setIdPlayer($idPlayer) 
+	{ 
+		$this->idPlayer = $idPlayer; 
 	}
 
 	public function setGold($gold) 

@@ -3,6 +3,7 @@
 class Mage
 {
 	private $id;
+	private $idAccount;
 	private $name;
 	private $sex;
 	private $life;
@@ -14,9 +15,10 @@ class Mage
 	private $precision;
 
 	
-	public function __construct($id = null, $name=null, $sex = null, $age = null, $life = null, $strength = null, $speed = null, $agility = null, $power = null, $precision = null) 
+	public function __construct($id = null, $idAccount = null, $name=null, $sex = null, $age = null, $life = null, $strength = null, $speed = null, $agility = null, $power = null, $precision = null) 
 	{
 		$this->id = $id;
+		$this->idAccount = $idAccount;
 		$this->name = $name;
 		$this->sex = $sex;
 		$this->life = $life;
@@ -31,6 +33,11 @@ class Mage
 	public function getId() 
 	{ 
 		return $this->id; 
+	}
+
+	public function getIdAccount() 
+	{ 
+		return $this->idAccount; 
 	}
 
 	public function getName() 
@@ -81,6 +88,11 @@ class Mage
 	public function setId($id) 
 	{ 
 		$this->id = $id; 
+	}
+
+	public function setIdAccount($idAccount) 
+	{ 
+		$this->idAccount = $idAccount; 
 	}
 
 	public function setName($name) 

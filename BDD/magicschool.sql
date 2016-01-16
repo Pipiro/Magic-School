@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 12 Janvier 2016 à 18:38
+-- Généré le :  Sam 16 Janvier 2016 à 01:07
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -23,6 +23,51 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `account`
+--
+
+CREATE TABLE IF NOT EXISTS `account` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idPlayer` int(11) NOT NULL,
+  `gold` bigint(20) NOT NULL,
+  `level` int(11) NOT NULL,
+  `experience` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `account`
+--
+
+INSERT INTO `account` (`id`, `idPlayer`, `gold`, `level`, `experience`) VALUES
+(1, 1, 1000, 1, 2500);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `notification`
+--
+
+CREATE TABLE IF NOT EXISTS `notification` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idAccount` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `isNew` int(11) NOT NULL,
+  `date` timestamp NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `notification`
+--
+
+INSERT INTO `notification` (`id`, `idAccount`, `type`, `content`, `isNew`, `date`) VALUES
+(1, 1, 'INFO', 'Bnjour', 0, '2016-01-16 00:07:40');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `player`
 --
 
@@ -32,9 +77,16 @@ CREATE TABLE IF NOT EXISTS `player` (
   `password` varchar(255) NOT NULL,
   `isAdmin` int(11) NOT NULL DEFAULT '1',
   `isOnline` int(11) NOT NULL,
-  `lastOnline` bigint(20) NOT NULL,
+  `lastOnline` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `player`
+--
+
+INSERT INTO `player` (`id`, `username`, `password`, `isAdmin`, `isOnline`, `lastOnline`) VALUES
+(1, 'Pipiro', 'yolo', 0, 0, '2016-01-16 00:06:15');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
