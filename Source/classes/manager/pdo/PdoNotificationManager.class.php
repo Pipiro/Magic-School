@@ -18,9 +18,9 @@ class PdoNotificationManager extends AbstractPdoManager
 	public function getNotificationsByAccount($idAccount)
 	{
 		$results = array();
-		$query = $this->pdo->prepare("SELECT id, idAccount, type, content, isNew, date FROM notification WHERE idAccount=:idAccount ORDER BY date DESC");
 
-		$query->bindValue(':idAccount', $idAccount);
+		$query = $this->pdo->prepare("SELECT id, idAccount, type, content, isNew, date FROM notification WHERE idAccount='$idAccount' ORDER BY date DESC");
+		
 		$query->execute();
 		
 		while($result = $query->fetch(PDO::FETCH_OBJ)) 
@@ -32,6 +32,25 @@ class PdoNotificationManager extends AbstractPdoManager
 		$query->closeCursor();
 
 		return $results;
+	}
+
+	//------------------------------------------------------------
+	//  Fonction 	addNotification
+	//  Auteur      Pipiro
+	//------------------------------------------------------------
+	//  Role		: Ajouter une notification
+	//
+	//------------------------------------------------------------
+	//  Entrée		: Id du compte, type de la notification, contenu
+	//  Sortie		: 
+	//------------------------------------------------------------
+	public function addNotification($idAccount, $type, $content)
+	{
+		$query = $this->pdo->prepare("
+		INSERT INTO notification (idAccount, type, content, isNew, date)
+		VALUES ('".$idAccount."', '".$type."', '".$content."', 0, '".time()."')");
+			
+		$resultat=$query->execute();
 	}
 
 	//------------------------------------------------------------
@@ -68,6 +87,23 @@ class PdoNotificationManager extends AbstractPdoManager
         }
 
 		return "il y a ".$contentDate;
+	}
+
+	//------------------------------------------------------------
+	//  Fonction 	updateStatutNotification
+	//  Auteur      Pipiro
+	//------------------------------------------------------------
+	//  Role		: Mise à jour du statut de la notification
+	//
+	//------------------------------------------------------------
+	//  Entrée		: Id de la notification
+	//  Sortie		: 
+	//------------------------------------------------------------
+	public function updateStatutNotification($id)
+	{
+		$query = $this->pdo->prepare("UPDATE notification SET isNew=1 WHERE id='$id'");
+
+		$resultat=$query->execute();
 	}
 
 }

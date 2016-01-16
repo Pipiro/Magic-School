@@ -3,17 +3,21 @@
 class Mail
 {
 	private $id;
-	private $gold;
-	private $level;
-	private $experience;
+	private $idAccount;
+	private $sender;
+	private $content;
+	private $isNew;
+	private $date;
 
 	
-	public function __construct($id = null, $gold = null, $level = null, $experience = null) 
+	public function __construct($id = null, $idAccount = null, $sender = null, $content = null, $isNew = null, $date = null) 
 	{
 		$this->id = $id;
-		$this->gold = $gold;
-		$this->level = $level;
-		$this->experience = $experience;
+		$this->idAccount = $idAccount;
+		$this->sender = $sender;
+		$this->content = $content;
+		$this->isNew = $isNew;
+		$this->date = $date;
 	}
 
 	public function getId() 
@@ -21,19 +25,29 @@ class Mail
 		return $this->id; 
 	}
 
-	public function getGold() 
+	public function getIdAccount() 
 	{ 
-		return $this->gold; 
+		return $this->idAccount; 
 	}
 
-	public function getLevel() 
+	public function getSender() 
 	{ 
-		return $this->level; 
+		return $this->sender; 
 	}
 
-	public function getExperience() 
+	public function getContent() 
 	{ 
-		return $this->experience; 
+		return $this->content; 
+	}
+
+	public function getIsNew() 
+	{ 
+		return $this->isNew; 
+	}
+
+	public function getDate() 
+	{ 
+		return $this->date; 
 	}
 
 	public function setId($id) 
@@ -41,19 +55,29 @@ class Mail
 		$this->id = $id; 
 	}
 
-	public function setGold($gold) 
+	public function setIdAccount($idAccount) 
 	{ 
-		$this->gold = $gold; 
+		$this->idAccount = $idAccount; 
 	}
 
-	public function setLevel($level) 
+	public function setSender($sender) 
 	{ 
-		$this->level = $level; 
+		$this->sender = $sender; 
 	}
 
-	public function setExperience($experience) 
+	public function setContent($content) 
 	{ 
-		$this->experience = $experience; 
+		$this->content = $content; 
+	}
+
+	public function setIsNew($isNew) 
+	{ 
+		$this->isNew = $isNew; 
+	}
+
+	public function setDate($date) 
+	{ 
+		$this->date = $date; 
 	}
 	
 }
