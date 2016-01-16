@@ -141,7 +141,9 @@
                         <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
-                        <?php foreach ($notifications as $notification): ?>
+                        <?php if ($notifications != null)
+                        {
+                            foreach ($notifications as $notification): ?>
                             <li>
                                 <a href="#">
                                     <div>
@@ -150,7 +152,16 @@
                                     </div>
                                 </a>
                             </li>
-                        <?php endforeach  ?>
+                            <?php endforeach;  
+                        } else { ?>
+                            <li>
+                                <a>
+                                    <div>
+                                        Aucune notification
+                                    </div>
+                                </a>
+                            </li>
+                        <?php } ?>
                         <!-- <li>
                             <a href="#">
                                 <div>
@@ -194,14 +205,14 @@
                                     <span class="pull-right text-muted small">4 minutes ago</span>
                                 </div>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="divider"></li>
                         <li>
                             <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
+                                <strong>Afficher tout</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        </li> -->
+                        </li>
                     </ul>
                     <!-- /.dropdown-alerts -->
                 </li>
@@ -211,12 +222,12 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Profil</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Paramètres</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Déconnexion</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
