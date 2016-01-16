@@ -1,8 +1,9 @@
 <?php
     require 'required.php';
 
-    //on simule la connexion
+    //on simule la connexion et le compte
     $_SESSION['playerId'] = "1";
+    $_SESSION['accountId'] = "1";
 ?>
 
 <!DOCTYPE html>

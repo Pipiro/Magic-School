@@ -1,3 +1,9 @@
+<?php 
+    $nm = new PdoNotificationManager();
+    $notifications = $nm->getNotificationsByAccount($_SESSION['accountId']);
+?>
+
+
 <ul class="nav navbar-top-links navbar-right">
      <?php if (isset($_SESSION['playerId'])) { ?>
                 <li class="dropdown">
@@ -135,7 +141,17 @@
                         <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
-                        <li>
+                        <?php foreach ($notifications as $notification): ?>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <i class="fa fa-comment fa-fw"></i><?php echo " ".$notification->getContent(); ?>
+                                        <span class="pull-right text-muted small"><?php echo " ".$nm->getContentTimeNotification($notification->getDate()); ?></span>
+                                    </div>
+                                </a>
+                            </li>
+                        <?php endforeach  ?>
+                        <!-- <li>
                             <a href="#">
                                 <div>
                                     <i class="fa fa-comment fa-fw"></i> New Comment
@@ -185,7 +201,7 @@
                                 <strong>See All Alerts</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                     <!-- /.dropdown-alerts -->
                 </li>

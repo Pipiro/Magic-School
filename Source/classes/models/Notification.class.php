@@ -3,7 +3,7 @@
 class Notification
 {
 	private $id;
-	private $idAccount
+	private $idAccount;
 	private $type;
 	private $content;
 	private $isNew;

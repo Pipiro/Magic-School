@@ -12,23 +12,62 @@ class PdoNotificationManager extends AbstractPdoManager
 	//  Role		: Récupérer les notification par compte
 	//
 	//------------------------------------------------------------
-	//  Entrée		: Pseudo du joueur, mot de passe
-	//  Sortie		: Objet Joueur
+	//  Entrée		: Id du compte
+	//  Sortie		: Objets notification
 	//------------------------------------------------------------
-	public function getNotificationByAccount($idAccount)
+	public function getNotificationsByAccount($idAccount)
 	{
-		$query = $this->pdo->prepare("SELECT id, username, password, isAdmin, isOnline, lastOnline FROM player WHERE idAccount=:idAccount");
+		$results = array();
+		$query = $this->pdo->prepare("SELECT id, idAccount, type, content, isNew, date FROM notification WHERE idAccount=:idAccount ORDER BY date DESC");
 
 		$query->bindValue(':idAccount', $idAccount);
 		$query->execute();
-			
-		$result = $query->fetch(PDO::FETCH_OBJ);
-
-		if($result && $result->password == (md5($password)))
+		
+		while($result = $query->fetch(PDO::FETCH_OBJ)) 
 		{
-			return new Player($result->id, $result->username, $result->isAdmin, $result->isOnline, $result->lastOnline);
+			$notification = new notification($result->id, $result->idAccount, $result->type, $result->content, $result->isNew, $result->date);
+			$results[] = $notification;
 		}
+		
+		$query->closeCursor();
+
+		return $results;
 	}
 
+	//------------------------------------------------------------
+	//  Fonction 	getContentTimeNotification
+	//  Auteur      Pipiro
+	//------------------------------------------------------------
+	//  Role		: Retourne la différence de temps pour les
+	//				  notifications
+	//
+	//------------------------------------------------------------
+	//  Entrée		: Date de la notification
+	//  Sortie		: Contenue du temps pour la notification
+	//------------------------------------------------------------
+	public function getContentTimeNotification($date)
+	{
+		$minusTimestamp = time() - $date;
+        $contentDate = "";
+
+        if ($minusTimestamp < 60)
+        {
+            $contentDate = $minusTimestamp." secondes";
+        }
+        else if ($minusTimestamp < 3600)
+        {
+            $contentDate = variant_int($minusTimestamp/60)." minutes";
+        }
+        else if ($minusTimestamp < 216000)
+        {
+            $contentDate = variant_int($minusTimestamp/3600)." heures";
+        }
+        else
+        {
+            $contentDate = variant_int($minusTimestamp/86400)." jours";
+        }
+
+		return "il y a ".$contentDate;
+	}
 
 }

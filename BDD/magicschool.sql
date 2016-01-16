@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 16 Janvier 2016 à 01:07
+-- Généré le :  Sam 16 Janvier 2016 à 14:47
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -54,16 +54,19 @@ CREATE TABLE IF NOT EXISTS `notification` (
   `type` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL,
   `isNew` int(11) NOT NULL,
-  `date` timestamp NOT NULL,
+  `date` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `notification`
 --
 
 INSERT INTO `notification` (`id`, `idAccount`, `type`, `content`, `isNew`, `date`) VALUES
-(1, 1, 'INFO', 'Bnjour', 0, '2016-01-16 00:07:40');
+(1, 1, 'INFO', 'Bonjour', 0, 1452950620),
+(2, 1, 'INFO', 'Hey !', 0, 1452948620),
+(3, 2, 'INFO', 'SWEG', 0, 1452940620),
+(4, 1, 'INFO', 'Cool hein ?', 0, 1452432220);
 
 -- --------------------------------------------------------
 
@@ -77,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `password` varchar(255) NOT NULL,
   `isAdmin` int(11) NOT NULL DEFAULT '1',
   `isOnline` int(11) NOT NULL,
-  `lastOnline` timestamp NOT NULL,
+  `lastOnline` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -86,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `player` (
 --
 
 INSERT INTO `player` (`id`, `username`, `password`, `isAdmin`, `isOnline`, `lastOnline`) VALUES
-(1, 'Pipiro', 'yolo', 0, 0, '2016-01-16 00:06:15');
+(1, 'Pipiro', 'yolo', 0, 0, 1452950620);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
