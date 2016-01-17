@@ -4,6 +4,7 @@
     //on simule la connexion et le compte
     $_SESSION['playerId'] = "1";
     $_SESSION['accountId'] = "1";
+    $_SESSION['username'] = "Pipiro";
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +76,11 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Bienvenue</h1>
+                    <?php if ($_SESSION['username'] != null) { ?>
+                        <h1 class="page-header"><?php echo $_SESSION['username']; ?>
+                    <?php } else { ?>
+                        <h1 class="page-header">Bienvenue</h1>
+                    <?php } ?>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
